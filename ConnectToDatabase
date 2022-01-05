@@ -1,4 +1,6 @@
 #! /bin/bash
+if [ -d databases ]
+then
  echo Enter Database Name
  typeset -i x;
  x=0;
@@ -23,9 +25,10 @@ while [ $x -eq 0 ]
     if [ $x -eq 0 ]
      then
         tput setaf 9
-        echo Un Exsit Database,Please Enter Again
+        echo Database does not exist,Please Enter Again
         tput sgr0
     fi
    done
-     
-	  
+else
+   echo "There are no databases"
+fi   	  

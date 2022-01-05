@@ -1,4 +1,12 @@
 #! /bin/bash
+function show_menu()
+    {
+            echo -e "1) Create Database \t 3) Connect to  Databases \t 4) EXIT"
+            echo -e "2) List Database \t 4) Drop Database" 
+
+    }
+if [ -d databases ]
+then
  echo Enter Database Name to delete
  typeset -i x;
  x=0;
@@ -29,12 +37,8 @@ echo " "
 echo "*****Welcome to DBMS*****"
 echo "-------------------------"
 tput sgr0
+show_menu
 
-    function show_menu()
-    {
-            echo -e "1) Create Database \t 3) Connect to  Databases \t 4) EXIT"
-            echo -e "2) List Database \t 4) Drop Database" 
-
-    }
-    show_menu
-
+else
+	echo "There are no databases"
+fi

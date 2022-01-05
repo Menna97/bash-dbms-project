@@ -1,0 +1,36 @@
+#! /bin/bash
+tput clear
+typeset -i x
+x=1
+tput cup 1 25
+tput setaf 11
+echo   The tables in $1
+tput sgr0
+typeset -i y
+y=3
+ for t in ` ls databases/$1 `
+   do
+	   tput cup $y 25
+	   ((y=$y+1))
+      if [[ "$t" != *meta  ]]
+      then
+          echo  $x ")" $t 
+	  ((x=$x+1))
+
+      fi
+        tput sgr0
+	
+   done
+   
+   
+ tput cup $y 0
+ function show_menu()
+  {
+          echo -e "1) Create Table\t 4) Insert Into Table \t 7) Update Table"
+          echo -e "2) List Tables \t 5) Select From Table\t 8) Back to mainmenu"
+	  echo -e "3) Drop Table  \t 6) Delete From Table\t "
+
+  }
+                show_menu
+
+

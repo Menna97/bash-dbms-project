@@ -1,0 +1,31 @@
+#! /bin/bash
+ echo Enter Database Name
+ typeset -i x;
+ x=0;
+ d=../../
+while [ $x -eq 0 ]
+ do
+  read name
+    for db in `ls databases`
+     do
+	     if [ $name = $db  ]
+        then
+	   tput clear
+	   tput cup 3 30
+	   tput setaf 3
+           echo -e '*'  $db' in use now * '; # -e for new line
+	   ./tablemenu $name
+	   x=1;
+	   tput sgr0
+	   break;
+        fi
+     done
+    if [ $x -eq 0 ]
+     then
+        tput setaf 9
+        echo Un Exsit Database,Please Enter Again
+        tput sgr0
+    fi
+   done
+     
+	  

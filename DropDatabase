@@ -1,0 +1,40 @@
+#! /bin/bash
+ echo Enter Database Name to delete
+ typeset -i x;
+ x=0;
+ read name
+ d=database/$name
+    for db in `ls databases/$1`
+     do
+      if [ $name = $db  ]
+        then
+           tput clear
+           tput cup 3 30
+           tput setaf 3
+	   rm -r databases/$name
+	   echo  $name is deleted succefuly; # -e for new line
+           x=1;
+	   tput sgr0
+        fi
+     done
+    if [ $x -eq 0 ]
+     then
+	   tput setaf 9
+           echo no $name database found,please enter a vaild name
+           tput sgr0
+           ./DropDatabase
+     fi
+tput setaf 3
+echo " "
+echo "*****Welcome to DBMS*****"
+echo "-------------------------"
+tput sgr0
+
+    function show_menu()
+    {
+            echo -e "1) Create Database \t 3) Connect to  Databases \t 4) EXIT"
+            echo -e "2) List Database \t 4) Drop Database" 
+
+    }
+    show_menu
+

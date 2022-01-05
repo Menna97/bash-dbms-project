@@ -1,0 +1,46 @@
+#!/bin/bash
+tput setaf 3
+echo "*****Welcome to $1 database*****"
+echo "-------------------------"
+db=$1
+PS3="Make a Choice-->"
+tput sgr0
+select choice in 'Create Table' 'List Tables' 'Drop Table' 'Insert Into Table' 'Select From Table' 'Delete From Table' 'Update Table' 'Back to mainmenu' 
+do
+        case $REPLY in
+                1)
+                        ./createTable.sh $1
+                        ;;
+                2)
+                       ./ListTables $db
+		        
+                        ;;
+                3)
+                       ./DropTable $1
+                        ;;
+                4)
+			./insertIntoTable.sh $1
+                        ;;
+                5)
+			./selectFromTable.sh $1
+			;;
+	        6)
+                        ./deleteFromTable.sh $1
+                        ;;
+		7)
+		        ./updateTable.sh $1
+			;;
+		8)
+			tput setaf 3
+                        echo "*****Welcome to DBMS*****"
+                        echo "-------------------------"
+                        tput sgr0
+                        echo -e "1) Create Database \t 3) Connect to  Databases \t 5) EXIT"
+                        echo -e "2) List Database \t 4) Drop Database"
+			exit 0
+			;;
+                *)
+			echo "$REPLY is not  one of the choices"
+			;;
+	esac
+done

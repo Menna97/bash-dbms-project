@@ -1,0 +1,51 @@
+#! /bin/bash
+function show_database(){
+tput clear            # to clear the screen
+x=3
+y=25
+tput cup $x $y     #to move the cursor
+tput bold
+tput setaf 11       # to set color in fornt
+tput rev           # to rev the front with back
+echo   YOUR DATABASES
+tput sgr0           # to end the tupt attrbuite
+i=0;
+   tput setaf 3
+     ((x=x+1))
+   tput cup $x $y
+   echo ---------------
+    ((x=x+1))
+   tput cup $x $y
+   echo "| # | Database |"
+    ((x=x+1))
+   tput cup $x $y
+   echo ----------------
+   tput cup $x $y
+   for db in `ls databases`
+    do
+	   ((x=x+1))
+	   tput cup $x $y
+	   echo "| " $i" | "$db"   |";
+	   ((i=i+1));
+	   ((x=x+1))
+           tput cup $x $y
+    echo ----------------
+    done
+   }
+   show_database
+    tput sgr0
+
+    tput setaf 3
+echo " "
+echo "*****Welcome to DBMS*****"
+echo "-------------------------"
+tput sgr0
+
+    function show_menu()
+    {
+	    echo -e "1) Create Database \t 3) Connect to  Databases \t 5) EXIT"
+	    echo -e "2) List Database \t 4) Drop Database" 
+
+    }
+    show_menu
+

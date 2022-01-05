@@ -1,0 +1,45 @@
+#!/bin/bash
+tput setaf 11
+echo Enter table name to drop "(delete)"
+tput sgr0
+typeset -i x
+x=0
+ read name
+  if [  $name != "metadata" ]
+    then
+     for t in `ls databases/$1`
+       do
+         if [ $name = $t ]
+            then 
+             rm  databases/$1/$t
+	     rm databases/$1/$t.meta
+	     tput setaf 3
+	     echo $name table is drop sucesfuly
+	     tput sgr0
+	     ((x=$x+1))
+	     break;
+         fi
+        done
+	 if [ $x -eq 0 ]
+            then 
+            tput setaf 9
+            echo No Table With Name $name
+	    tput sgr0  
+            ./DropTable $1
+         fi
+   else
+	  tput setaf 9
+	  echo Not Allow to delete metadata
+	  tput sgr0
+	  ./DropTable $1
+  fi
+function show_menu()
+  {
+          echo -e "1) Create Table\t 4) Insert Into Table \t 7) Update Table"
+          echo -e "2) List Tables \t 5) Select From Table\t 8) Back to mainmenu"
+          echo -e "3) Drop Table  \t 6) Delete From Table\t "
+
+  }
+                show_menu
+
+

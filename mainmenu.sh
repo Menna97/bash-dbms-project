@@ -1,5 +1,5 @@
 #!/bin/bash
- tput setaf 3
+tput setaf 3
 echo " "
 echo "*****Welcome to DBMS*****"
 echo "-------------------------"

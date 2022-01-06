@@ -3,18 +3,19 @@ valid='a-zA-Z0-9_-'
 echo " "
 echo "Enter new database name:"
 read dbname
- if [ ! -d databases ]
- then
-	 mkdir databases
- fi 
 
-if [ -z databases/$dbname ]
+if [ ! -d databases ]
+then
+	mkdir databases
+fi
+
+if [ -z $dbname ]
 then
 	echo "ERROR: empty string"
 elif [ -d databases/$dbname ]
 then
 	echo "ERROR: database $dbname already exists"
-elif [[ !$dbname =~ ^[[:alpha:]]+ ]]
+elif [[ ! $dbname =~ ^[[:alpha:]]+ ]]
 then
 	echo "ERROR: invalid database name $dbname"
 	echo "Database name must begin with alphabetic characters only"

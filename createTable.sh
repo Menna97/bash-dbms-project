@@ -7,17 +7,17 @@ read tbname
 if [ -z $tbname ]
 then
 	echo "ERROR: empty string"
-elif [ -f $1/$tbname ]
+elif [ -f databases/$1/$tbname ]
 then
 	echo "ERROR: table $tbname already exists"
 elif [[ ! $tbname =~ ^[[:alpha:]_]+ ]]
 then
-        echo "ERROR: invalid table name $dbname"
+        echo "ERROR: invalid table name $tbname"
         echo "Table name must begin with alphabetic characters"
 	echo "or underscore only"
 elif [[ $tbname =~ [^$valid] ]]
 then
-	echo "ERROR: invalid table name $dbname"
+	echo "ERROR: invalid table name $tbname"
 	echo "Table name must only contain alphanumeric characters, - or _"
 else
 	touch databases/$1/$tbname
